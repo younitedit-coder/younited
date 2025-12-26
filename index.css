@@ -88,7 +88,7 @@ img {
 }
 
 section {
-    padding: 50px 0;
+    padding: 60px 0;
 }
 
 .section-content {
@@ -98,7 +98,7 @@ section {
 }
 
 .section-ttl {
-    font-size: 1.1em;
+    font-size: 1.3em;
     font-weight: 600;
     font-family: "montserrat", sans-serif;
     color: #008080;
@@ -179,7 +179,7 @@ header {
 }
 
 h1.main-logo {
-    width: 50px;
+    width: 55px;
     position: fixed;
     top: 15px;
     left: 12px;
@@ -369,7 +369,7 @@ a.policy {
     font-weight: 500;
     letter-spacing: .05em;
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     text-shadow: 0 0 13px rgba(24, 24, 24, .85);
 }
 
@@ -436,7 +436,7 @@ a.policy {
     border-radius: 5px;
     background: rgba(255, 255, 255, .3);
     box-shadow: 2px 2px 15px 0px rgb(0 0 0 / 8%);
-    padding: 3.5em 0 2.5em;
+    padding: 4.5em 0 4em;
     position: relative;
     margin-bottom: 10px;
 }
@@ -481,6 +481,7 @@ a.policy {
         max-width: calc(((100% / 12) * 4) - 10px);
         flex-basis: calc(((100% / 12) * 4) - 10px);
         margin: 0 5px 50px;
+        padding: 3.5em 0 3em;
     }
 
     .service-element-txt {
@@ -510,7 +511,7 @@ a.policy {
         max-width: calc(((100% / 12) * 4) - 30px);
         flex-basis: calc(((100% / 12) * 4) - 30px);
         margin: 0 15px 70px;
-        padding: 4em 0 3.5em;
+        padding: 5em 0 4.5em;
     }
 
     .service-txtarea {
@@ -544,7 +545,7 @@ a.policy {
 .company-element {
     background: rgba(255, 255, 255, .7);
     border-radius: 5px;
-    padding: 3em 1em;
+    padding: 1.5em 1em;
     font-size: 15px;
 }
 
@@ -612,6 +613,7 @@ a.policy {
         flex-basis: calc(((100% / 12) * 6) - 10px);
         margin: 0 5px 10px;
         position: relative;
+        padding: 2em 1em;
     }
     .company-element:last-child{
         margin-top: 0;
@@ -627,10 +629,19 @@ a.policy {
     }
 }
 @media screen and (min-width: 1028px) {
+    .company-inner{
+        width: calc(100% + 30px);
+        margin: 0 -15px;
+    }
+    .company-element{
+        max-width: calc(((100% / 12) * 6) - 30px);
+        flex-basis: calc(((100% / 12) * 6) - 30px);
+        margin: 0 15px;
+        padding: 45px 35px;
+    }
     .section-company .section-ttl {
         font-size: 22px;
     }
-    
     .section-company .section-ttl{
         font-size: 20px;
     }
@@ -650,10 +661,23 @@ a.policy {
 .prof-img, .prof-area-element{
     max-width: calc(((100% / 12) * 6) - 10px);
     flex-basis: calc(((100% / 12) * 6) - 10px);
-    margin: 0 5px 10px;
+    margin: 0 5px ;
 }
-/* .prof-area-element{
-    max-width: calc(((100% / 12) * 8) - 10px);
-    flex-basis: calc(((100% / 12) * 8) - 10px);
-    margin: 0 5px 10px;
-} */
+.prof-area{
+    margin-top: 15px;
+}
+.prof-area-ttl{
+    font-weight: bold;
+}
+.prof-area-item{
+    font-size: 14px;
+    text-decoration: underline;
+}
+.prof-txt{
+    font-size: 14px;
+}
+@media screen and (min-width: 1028px){
+    .prof-txt{
+        font-size: 1rem;
+    }
+}
