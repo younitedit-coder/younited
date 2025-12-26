@@ -1,7 +1,659 @@
 @charset "utf-8";
-p{
-    color: red;
+
+/* =============================================
+ reset
+============================================= */
+
+/*! modern-reset | MIT License */
+*,
+::after,
+::before {
+    box-sizing: border-box
 }
-.main-logo{
-    width: 30px;
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%
 }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word
+}
+
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+figure,
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+/* =============================================
+ common
+============================================= */
+div {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    color: #141414;
+}
+
+img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+section {
+    padding: 50px 0;
+}
+
+.section-content {
+    width: 92%;
+    margin: 0 auto;
+    max-width: 1110px;
+}
+
+.section-ttl {
+    font-size: 1.1em;
+    font-weight: 600;
+    font-family: "montserrat", sans-serif;
+    color: #008080;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.section-ttl-sub {
+    font-size: 1.2em;
+    margin-bottom: 18px;
+}
+
+.section-ttl-sub span {
+    display: inline-block;
+    background: rgba(255, 255, 255, .7);
+    font-weight: bold;
+}
+
+.section-txt {
+    line-height: 1.6;
+}
+
+.section-txt span.bold {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.dn-sp {
+    display: none;
+}
+
+@media screen and (min-width: 767px) {
+    section {
+        padding: 60px 0;
+    }
+
+    .section-ttl {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .dn-sp {
+        display: block;
+    }
+
+    .dn-pc {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1028px) {
+    section {
+        padding: 80px 0;
+    }
+
+    .section-ttl {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .section-ttl-sub {
+        margin-bottom: 25px;
+        font-size: 28px;
+    }
+
+    .section-txt {
+        font-size: 18px;
+    }
+}
+
+/* =============================================
+ header
+============================================= */
+header {
+    position: relative;
+    z-index: 1;
+}
+
+h1.main-logo {
+    width: 50px;
+    position: fixed;
+    top: 15px;
+    left: 12px;
+    filter: drop-shadow(0 0 10px rgba(0, 73, 73, 0.2));
+}
+
+a.policy {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    font-family: "montserrat", sans-serif;
+    font-size: 11px;
+    text-decoration: underline;
+    letter-spacing: .05em;
+}
+
+@media screen and (min-width: 767px) {
+    .main-treat {
+        position: fixed;
+        left: -80px;
+        font-size: 12px;
+        top: 28vw;
+        transform: rotate(90deg) translateY(-50%);
+        font-family: "montserrat", sans-serif;
+        color: #868686;
+        letter-spacing: .07em;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .main-treat {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1028px) {
+    .main-treat {
+        top: 25vw;
+    }
+
+    a.policy {
+        top: 20px;
+        right: 25px;
+        font-size: 14px;
+    }
+}
+
+.main-nav{
+    position: absolute;
+    top: 38.5vw;
+    right: 0;
+    z-index: 10;
+    background: linear-gradient(-45deg, rgba(0,128,128,.9),rgba(4,179,165,.9));
+    padding: 1em 2em;
+    border-radius: 3px 0 0 3px;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.main-nav a {
+    font-family: "montserrat", sans-serif;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: .06em;
+    font-size: 14px;
+}
+
+/* スマホ：非表示設定 */
+.menu-trigger {
+    display: none;
+}
+
+@media (max-width: 767px) {
+  
+    .menu-trigger {
+        display: block;
+        position: fixed;
+        width: 30px;
+        height: 24px;
+        background: none;
+        border: none;
+        z-index: 100;
+        top: 15px;
+        right: 15px;
+    }
+
+    .menu-trigger span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        transition: all 0.4s;
+    }
+
+    .menu-trigger span:nth-of-type(1) {
+        top: 0;
+    }
+
+    .menu-trigger span:nth-of-type(2) {
+        top: 11px;
+    }
+
+    .menu-trigger span:nth-of-type(3) {
+        bottom: 0;
+    }
+
+    /* 開閉時のアニメーション（×印にする） */
+    .menu-trigger.active span:nth-of-type(1) {
+        transform: translateY(11px) rotate(-45deg);
+    }
+
+    .menu-trigger.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .menu-trigger.active span:nth-of-type(3) {
+        transform: translateY(-11px) rotate(45deg);
+    }
+
+    /* スマホメニュー本体 */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* 初期状態は画面の外 */
+        width: 80%;
+        height: 100vh;
+        background: rgba(0, 128, 128, 0.95);
+        transition: all 0.5s;
+        z-index: 90;
+    }
+
+    .main-nav.active {
+        right: 0;
+        /* アクティブ時にスライドイン */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        padding-top: 80px;
+        align-items: center;
+    }
+}
+@media screen and (min-width: 1028px){
+    .main-nav{
+        padding: 1.5em 50px;
+    }
+    .main-nav a{
+        font-size: 16px;
+    }
+    .main-nav ul{
+        gap: 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    /* 固定時のスタイル */
+    .main-nav.sticky {
+        position: fixed;
+        top: 5px !important;    /* 10pxの位置に固定 */
+        right: 0;
+        transition: none !important; /* アニメーションを無効化してバウンドを防ぐ */
+        z-index: 999;
+        border-radius: 3px 0 0 3px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 浮いている感を出す影 */
+    }
+}
+/* =============================================
+ main
+============================================= */
+.section-main {
+    background: url('./img/main-sp.jpg') no-repeat center/cover;
+    padding-top: 133.33%;
+    width: 100%;
+    position: relative;
+}
+
+.main-txt {
+    position: absolute;
+    top: 46%;
+    left: 4%;
+    font-weight: 500;
+    letter-spacing: .05em;
+    color: #fff;
+    font-size: 20px;
+    text-shadow: 0 0 13px rgba(24, 24, 24, .85);
+}
+
+@media screen and (min-width: 767px) {
+    .section-main {
+        background: url('./img/main.jpg') no-repeat center/cover;
+        padding-top: 36%;
+    }
+
+    h1.main-logo {
+        width: 60px;
+        top: 15px;
+        left: 12px;
+    }
+
+    .main-txt {
+        left: 10%;
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+
+    .main-txt {
+        left: 13%;
+    }
+}
+
+@media screen and (min-width: 1028px) {
+    h1.main-logo {
+        width: 75px;
+        top: 25px;
+        left: 30px;
+    }
+
+    .main-txt {
+        top: 50%;
+        font-size: 36px;
+    }
+}
+
+/* =============================================
+ lead
+============================================= */
+.section-lead {
+    background: url('./img/lead-bg.jpg')no-repeat left/cover;
+}
+
+@media screen and (min-width: 767px) {
+    .section-lead .section-ttl {
+        text-align: left;
+    }
+
+}
+
+/* =============================================
+ service
+============================================= */
+.section-service {
+    background: url('./img/service-bg.jpg') no-repeat bottom/cover;
+}
+
+.service-element {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, .3);
+    box-shadow: 2px 2px 15px 0px rgb(0 0 0 / 8%);
+    padding: 3.5em 0 2.5em;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.service-element-txt {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    color: #00b7ce;
+}
+
+.service-element-txt span {
+    font-size: 80%;
+    font-weight: normal;
+    display: block;
+    margin-top: 5px;
+}
+
+.service-element-icon {
+    width: 28px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.service-img {
+    width: 65%;
+    margin: 30px auto;
+}
+
+@media screen and (min-width: 767px) {
+    .service-inner {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: stretch;
+        width: calc(100% + 10px);
+        margin: 0 -5px;
+    }
+
+    .service-element {
+        max-width: calc(((100% / 12) * 4) - 10px);
+        flex-basis: calc(((100% / 12) * 4) - 10px);
+        margin: 0 5px 50px;
+    }
+
+    .service-element-txt {
+        font-size: 14px;
+    }
+
+    .service-img {
+        max-width: calc(((100% / 12) * 4) - 10px);
+        flex-basis: calc(((100% / 12) * 4) - 10px);
+        margin: 0 5px 10px;
+    }
+
+    .service-txtarea {
+        max-width: calc(((100% / 12) * 7) - 10px);
+        flex-basis: calc(((100% / 12) * 7) - 10px);
+        margin: 0 5px 10px;
+    }
+}
+
+@media screen and (min-width: 1028px) {
+    .service-inner {
+        width: calc(100% + 30px);
+        margin: 0 -15px;
+    }
+
+    .service-element {
+        max-width: calc(((100% / 12) * 4) - 30px);
+        flex-basis: calc(((100% / 12) * 4) - 30px);
+        margin: 0 15px 70px;
+        padding: 4em 0 3.5em;
+    }
+
+    .service-txtarea {
+        max-width: calc(((100% / 12) * 6) - 30px);
+        flex-basis: calc(((100% / 12) * 6) - 30px);
+        margin: 0 15px;
+    }
+
+    .service-element-txt {
+        font-size: 20px;
+    }
+
+    .service-element-icon {
+        width: 35px;
+        top: 20px;
+        right: 20px;
+    }
+
+    .service-element-txt span {
+        margin-top: 7px;
+    }
+}
+
+/* =============================================
+ company
+============================================= */
+.section-company {
+    background: url('./img/company-bg.jpg')no-repeat center/cover;
+}
+
+.company-element {
+    background: rgba(255, 255, 255, .7);
+    border-radius: 5px;
+    padding: 3em 1em;
+    font-size: 15px;
+}
+
+.company-element:last-child {
+    background: rgba(24, 24, 24, .7);
+    color: #fff;
+    line-height: 1.8;
+    margin-top: 30px;
+}
+
+.section-company .section-ttl {
+    font-size: 1rem;
+}
+
+.company-list {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 270px;
+}
+
+.conpany-list-item {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.conpany-list-item span {
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.conpany-list-item span.list-ttl {
+    border-bottom: 1px solid #008080;
+    width: calc((100% / 12) * 4);
+    padding: .2em 0;
+}
+
+.conpany-list-item span.list-content {
+    border-bottom: 1px solid #bdbdbd;
+    width: calc((100% / 12) * 8);
+    text-align: left;
+    padding: .2em 0;
+    padding-left: .5em;
+}
+.list-ttl{
+    color: #3f3f3f;
+    font-size: 95%;
+}
+.list-ttl.height{
+    line-height: 74px;
+}
+@media screen and (min-width: 767px){
+    .company-inner{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: stretch;
+        width: calc(100% + 10px);
+        margin: 0 -5px;
+    }
+    .company-element{
+        max-width: calc(((100% / 12) * 6) - 10px);
+        flex-basis: calc(((100% / 12) * 6) - 10px);
+        margin: 0 5px 10px;
+        position: relative;
+    }
+    .company-element:last-child{
+        margin-top: 0;
+    }
+    .section-company .section-ttl{
+        font-size: 18px;
+    }
+    .company-list{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+@media screen and (min-width: 1028px) {
+    .section-company .section-ttl {
+        font-size: 22px;
+    }
+    
+    .section-company .section-ttl{
+        font-size: 20px;
+    }
+    .company-list {
+        font-size: 18px;
+    }
+}
+
+.prof-inner{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    width: calc(100% + 10px);
+    margin: 0 -5px;
+}
+.prof-img, .prof-area-element{
+    max-width: calc(((100% / 12) * 6) - 10px);
+    flex-basis: calc(((100% / 12) * 6) - 10px);
+    margin: 0 5px 10px;
+}
+/* .prof-area-element{
+    max-width: calc(((100% / 12) * 8) - 10px);
+    flex-basis: calc(((100% / 12) * 8) - 10px);
+    margin: 0 5px 10px;
+} */
