@@ -103,7 +103,7 @@ section {
     font-family: "montserrat", sans-serif;
     color: #008080;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     line-height: 1;
 }
 
@@ -138,7 +138,7 @@ section {
 
     .section-ttl {
         font-size: 20px;
-        margin-bottom: 25px;
+        margin-bottom: 35px;
     }
 
     .dn-sp {
@@ -157,7 +157,7 @@ section {
 
     .section-ttl {
         font-size: 24px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
 
     .section-ttl-sub {
@@ -353,26 +353,74 @@ a.policy {
     }
 }
 /* =============================================
+ js
+============================================= */
+/* アニメーション前の状態 */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px); /* 30px下に下げておく */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 画面に入った時に追加するクラス */
+.fade-in-up.is-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* =============================================
  main
 ============================================= */
+.l-main{
+    overflow: hidden;
+}
+/* --- Base Section --- */
 .section-main {
     background: url('./img/main-sp.jpg') no-repeat center/cover;
     padding-top: 133.33%;
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
-.main-txt {
+/* --- Text Container (Float) --- */
+.main-txt-container {
     position: absolute;
     top: 46%;
     left: 4%;
-    font-weight: 500;
-    letter-spacing: .05em;
-    color: #fff;
-    font-size: 22px;
-    text-shadow: 0 0 13px rgba(24, 24, 24, .85);
+    z-index: 10;
+    width: auto;
 }
 
+/* --- Text Style & Animation --- */
+.main-txt.stagger-slide {
+    display: block;
+    position: static !important; /* 重なり防止 */
+    margin: 0 0 15px 0;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: .05em;
+    font-size: 24px;
+    text-shadow: 0 0 13px rgba(24, 24, 24, .85);
+    white-space: nowrap; /* 折り返し防止 */
+    
+    /* Animation Initial State */
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Show State */
+.main-txt.stagger-slide.is-show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Delay for 2nd Line */
+.main-txt.stagger-slide:nth-child(2) {
+    transition-delay: 0.5s;
+}
+
+/* --- Responsive 767px --- */
 @media screen and (min-width: 767px) {
     .section-main {
         background: url('./img/main.jpg') no-repeat center/cover;
@@ -381,23 +429,28 @@ a.policy {
 
     h1.main-logo {
         width: 60px;
+        position: absolute;
         top: 15px;
         left: 12px;
     }
 
-    .main-txt {
+    .main-txt-container {
         left: 10%;
+    }
+
+    .main-txt.stagger-slide {
         font-size: 25px;
     }
 }
 
+/* --- Responsive 1023px --- */
 @media screen and (min-width: 1023px) {
-
-    .main-txt {
+    .main-txt-container {
         left: 13%;
     }
 }
 
+/* --- Responsive 1028px --- */
 @media screen and (min-width: 1028px) {
     h1.main-logo {
         width: 75px;
@@ -405,20 +458,27 @@ a.policy {
         left: 30px;
     }
 
-    .main-txt {
+    .main-txt-container {
         top: 50%;
+    }
+
+    .main-txt.stagger-slide {
         font-size: 36px;
     }
 }
-
 /* =============================================
  lead
 ============================================= */
 .section-lead {
     background: url('./img/lead-bg.jpg')no-repeat left/cover;
 }
-
+.section-lead .section-ttl{
+    margin-bottom: 15px;
+}
 @media screen and (min-width: 767px) {
+    .section-lead .section-ttl{
+        margin-bottom: 25px;
+    }
     .section-lead .section-ttl {
         text-align: left;
     }
@@ -438,7 +498,7 @@ a.policy {
     box-shadow: 2px 2px 15px 0px rgb(0 0 0 / 8%);
     padding: 4.5em 0 4em;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .service-element-txt {
@@ -463,7 +523,7 @@ a.policy {
 }
 
 .service-img {
-    width: 65%;
+    width: 63%;
     margin: 30px auto;
 }
 
@@ -541,11 +601,13 @@ a.policy {
 .section-company {
     background: url('./img/company-bg.jpg')no-repeat center/cover;
 }
-
+.section-company .section-ttl{
+    margin-bottom: 20px;
+}
 .company-element {
     background: rgba(255, 255, 255, .7);
     border-radius: 5px;
-    padding: 1.5em 1em;
+    padding: 2em 1em;
     font-size: 15px;
 }
 
@@ -599,7 +661,11 @@ a.policy {
 .list-ttl.height{
     line-height: 74px;
 }
+
 @media screen and (min-width: 767px){
+    .section-company .section-ttl{
+        margin-bottom: 25px;
+    }
     .company-inner{
         display: flex;
         flex-flow: row wrap;
@@ -668,6 +734,7 @@ a.policy {
 }
 .prof-area-ttl{
     font-weight: bold;
+    font-size: 1rem;
 }
 .prof-area-item{
     font-size: 14px;
@@ -676,8 +743,89 @@ a.policy {
 .prof-txt{
     font-size: 14px;
 }
+@media screen and (min-width: 767px){
+    .prof-area-ttl{
+        font-size: 1.15rem;
+    }
+    .prof-area-item{
+        font-size: 1rem;
+    }
+}
 @media screen and (min-width: 1028px){
     .prof-txt{
         font-size: 1rem;
+    }
+    .prof-area-ttl{
+        font-size: 20px;
+    }
+    .prof-area-item{
+        font-size: 18px;
+    }
+}
+/* =============================================
+ contact
+============================================= */
+a.contact-btn{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border: 3px solid #04b3a5;
+    color: #008080;
+    text-align: center;
+    padding: 1.21em;
+    font-family: "montserrat", sans-serif;
+    box-sizing: border-box;
+}
+a.contact-btn:first-child{
+    color: #fff;
+    background: linear-gradient(-45deg,#008080, #04b3a5);
+    border: none;
+    margin-bottom: 20px;
+}
+@media screen and (min-width: 767px){
+    .contact-inner{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: stretch;
+        width: calc(100% + 30px);
+        margin: 0 -15px;
+    }
+    a.contact-btn{
+        max-width: calc(((100% / 12) * 6) - 30px);
+        flex-basis: calc(((100% / 12) * 6) - 30px);
+        margin: 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s ease;
+    }
+    a.contact-btn:first-child{
+        margin-bottom: 0;
+    }
+}
+@media screen and (min-width: 1028px){
+    a.contact-btn{
+        font-size: 20px;
+    }
+    a.contact-btn:hover{
+        transform: scale(1.02);
+    }
+}
+/* =============================================
+ footer
+============================================= */
+small{
+    color: #6b6b6b;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    padding: 20px 0;
+    font-family: "montserrat", sans-serif;
+}
+@media screen and (min-width: 767px){
+    small{
+        font-size: 14px;
+        padding: 40px 0;
     }
 }

@@ -35,3 +35,33 @@ $(function() {
     $nav.removeClass('active');
   });
 });
+
+$(window).on('scroll', function() {
+  $('.fade-in-up').each(function() {
+    // 要素がある位置（上からの距離）を取得
+    const targetPosition = $(this).offset().top;
+    // 現在のスクロール量を取得
+    const scroll = $(window).scrollTop();
+    // ウィンドウの高さを取得
+    const windowHeight = $(window).height();
+
+    // 「スクロール量 > 要素の位置 - ウィンドウの高さ + 100px」になったら発動
+    if (scroll > targetPosition - windowHeight + 100) {
+      $(this).addClass('is-show');
+    }
+  });
+});
+
+// main txt 
+$(window).on('scroll load', function() {
+  $('.stagger-slide').each(function() {
+    var target = $(this).offset().top;
+    var scroll = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    
+    // 要素が画面の下から20%の位置に来たら発動
+    if (scroll > target - windowHeight + 100) {
+      $(this).addClass('is-show');
+    }
+  });
+});
