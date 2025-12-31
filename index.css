@@ -95,6 +95,7 @@ section {
     width: 92%;
     margin: 0 auto;
     max-width: 1110px;
+    position: relative;
 }
 
 .section-ttl {
@@ -228,15 +229,16 @@ a.policy {
     }
 }
 
-.main-nav{
+.main-nav {
     position: absolute;
     top: 38.5vw;
     right: 0;
     z-index: 10;
-    background: linear-gradient(-45deg, rgba(0,128,128,.9),rgba(4,179,165,.9));
+    background: linear-gradient(-45deg, rgba(0, 128, 128, .9), rgba(4, 179, 165, .9));
     padding: 1em 2em;
     border-radius: 3px 0 0 3px;
 }
+
 .main-nav ul {
     display: flex;
     list-style: none;
@@ -257,7 +259,7 @@ a.policy {
 }
 
 @media (max-width: 767px) {
-  
+
     .menu-trigger {
         display: block;
         position: fixed;
@@ -328,51 +330,62 @@ a.policy {
         align-items: center;
     }
 }
-@media screen and (min-width: 1028px){
-    .main-nav{
+
+@media screen and (min-width: 1028px) {
+    .main-nav {
         padding: 1.5em 50px;
     }
-    .main-nav a{
+
+    .main-nav a {
         font-size: 16px;
     }
-    .main-nav ul{
+
+    .main-nav ul {
         gap: 30px;
     }
 }
 
 @media (min-width: 768px) {
+
     /* 固定時のスタイル */
     .main-nav.sticky {
         position: fixed;
-        top: 5px !important;    /* 10pxの位置に固定 */
+        top: 5px !important;
+        /* 10pxの位置に固定 */
         right: 0;
-        transition: none !important; /* アニメーションを無効化してバウンドを防ぐ */
+        transition: none !important;
+        /* アニメーションを無効化してバウンドを防ぐ */
         z-index: 999;
         border-radius: 3px 0 0 3px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 浮いている感を出す影 */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        /* 浮いている感を出す影 */
     }
 }
+
 /* =============================================
  js
 ============================================= */
 /* アニメーション前の状態 */
 .fade-in-up {
-  opacity: 0;
-  transform: translateY(30px); /* 30px下に下げておく */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(30px);
+    /* 30px下に下げておく */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 /* 画面に入った時に追加するクラス */
 .fade-in-up.is-show {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
+
 /* =============================================
  main
 ============================================= */
-.l-main{
+.l-main {
     overflow: hidden;
 }
+
 /* --- Base Section --- */
 .section-main {
     background: url('./img/main-sp.jpg') no-repeat center/cover;
@@ -394,15 +407,17 @@ a.policy {
 /* --- Text Style & Animation --- */
 .main-txt.stagger-slide {
     display: block;
-    position: static !important; /* 重なり防止 */
+    position: static !important;
+    /* 重なり防止 */
     margin: 0 0 15px 0;
     color: #fff;
     font-weight: 500;
     letter-spacing: .05em;
     font-size: 24px;
     text-shadow: 0 0 13px rgba(24, 24, 24, .85);
-    white-space: nowrap; /* 折り返し防止 */
-    
+    white-space: nowrap;
+    /* 折り返し防止 */
+
     /* Animation Initial State */
     opacity: 0;
     transform: translateX(-40px);
@@ -466,24 +481,141 @@ a.policy {
         font-size: 36px;
     }
 }
+
 /* =============================================
  lead
 ============================================= */
 .section-lead {
     background: url('./img/lead-bg.jpg')no-repeat left/cover;
 }
-.section-lead .section-ttl{
+
+.section-lead .section-ttl {
     margin-bottom: 15px;
 }
+
+.lead-txt-slide {
+    display: none;
+    margin-top: 10px;
+}
+
 @media screen and (min-width: 767px) {
-    .section-lead .section-ttl{
+    .section-lead .section-ttl {
         margin-bottom: 25px;
     }
+
     .section-lead .section-ttl {
         text-align: left;
     }
 
 }
+
+/* --- 1. テキストのアニメーション（以前の分） --- */
+.main-txt.stagger-slide {
+    display: block;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    margin: 10px 0;
+}
+
+.main-txt.stagger-slide.is-show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 2行目の時差 */
+.main-txt.stagger-slide:nth-child(2) {
+    transition-delay: 0.5s;
+}
+
+/* --- 2. 円のアニメーション（新しい分） --- */
+.circle-container {
+    position: relative;
+    width: 115px;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0;
+}
+
+.circle-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    /* 真上から開始 */
+}
+
+.circle-line {
+    fill: none;
+    stroke: #008080;
+    /* 線の色 */
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    /* 半径45の時の円周 */
+    stroke-dashoffset: 283;
+}
+
+/* 画面に入った時に付与されるクラスでアニメーション開始 */
+.circle-line.is-active {
+    animation: circle-step-anim 4s ease-in-out infinite;
+}
+
+/* 描画(1秒) → 停止(1秒) → 消去(1秒) → 停止(1秒) のループ */
+@keyframes circle-step-anim {
+    0% {
+        stroke-dashoffset: 283;
+    }
+
+    /* 空 */
+    25% {
+        stroke-dashoffset: 0;
+    }
+
+    /* 描き終わり */
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    /* 1秒停止 */
+    75% {
+        stroke-dashoffset: -283;
+    }
+
+    /* 消え終わり */
+    100% {
+        stroke-dashoffset: -283;
+    }
+
+    /* 1秒停止 */
+}
+
+.circle-text {
+    font-family: "montserrat", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: #008080;
+}
+@media screen and (min-width: 767px){
+    .circle-container{
+        position: absolute;
+        top: 30px;
+        right: 7vw;
+    }
+    .circle-text{
+        font-size: 15px;
+    }
+}
+@media screen and (min-width: 1028px){
+    .circle-container{
+        top: 50px;
+    }
+}
+
 
 /* =============================================
  service
@@ -601,9 +733,11 @@ a.policy {
 .section-company {
     background: url('./img/company-bg.jpg')no-repeat center/cover;
 }
-.section-company .section-ttl{
+
+.section-company .section-ttl {
     margin-bottom: 20px;
 }
+
 .company-element {
     background: rgba(255, 255, 255, .7);
     border-radius: 5px;
@@ -654,19 +788,22 @@ a.policy {
     padding: .2em 0;
     padding-left: .5em;
 }
-.list-ttl{
+
+.list-ttl {
     color: #3f3f3f;
     font-size: 95%;
 }
-.list-ttl.height{
+
+.list-ttl.height {
     line-height: 74px;
 }
 
-@media screen and (min-width: 767px){
-    .section-company .section-ttl{
+@media screen and (min-width: 767px) {
+    .section-company .section-ttl {
         margin-bottom: 25px;
     }
-    .company-inner{
+
+    .company-inner {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -674,49 +811,70 @@ a.policy {
         width: calc(100% + 10px);
         margin: 0 -5px;
     }
-    .company-element{
+
+    .company-element {
         max-width: calc(((100% / 12) * 6) - 10px);
         flex-basis: calc(((100% / 12) * 6) - 10px);
         margin: 0 5px 10px;
         position: relative;
         padding: 2em 1em;
     }
-    .company-element:last-child{
+
+    .company-element:last-child {
         margin-top: 0;
     }
-    .section-company .section-ttl{
+
+    .section-company .section-ttl {
         font-size: 18px;
     }
-    .company-list{
+
+    .company-list {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
 }
+
 @media screen and (min-width: 1028px) {
-    .company-inner{
+    .company-inner {
         width: calc(100% + 30px);
         margin: 0 -15px;
     }
-    .company-element{
+
+    .company-element {
         max-width: calc(((100% / 12) * 6) - 30px);
         flex-basis: calc(((100% / 12) * 6) - 30px);
         margin: 0 15px;
         padding: 45px 35px;
     }
+
     .section-company .section-ttl {
         font-size: 22px;
     }
-    .section-company .section-ttl{
+
+    .section-company .section-ttl {
         font-size: 20px;
     }
+
     .company-list {
         font-size: 18px;
+        max-width: 360px;
+    }
+    .conpany-list-item span.list-content{
+        padding: .5em 0;
+        padding-left: 1.5em;
+    }
+    .conpany-list-item span.list-ttl{
+        padding: .5em 0;
+
+    }
+    .conpany-list-item{
+        margin-bottom: 10px;
     }
 }
 
-.prof-inner{
+.prof-inner {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -724,48 +882,60 @@ a.policy {
     width: calc(100% + 10px);
     margin: 0 -5px;
 }
-.prof-img, .prof-area-element{
+
+.prof-img,
+.prof-area-element {
     max-width: calc(((100% / 12) * 6) - 10px);
     flex-basis: calc(((100% / 12) * 6) - 10px);
-    margin: 0 5px ;
+    margin: 0 5px;
 }
-.prof-area{
+
+.prof-area {
     margin-top: 15px;
 }
-.prof-area-ttl{
+
+.prof-area-ttl {
     font-weight: bold;
     font-size: 1rem;
 }
-.prof-area-item{
+
+.prof-area-item {
     font-size: 14px;
     text-decoration: underline;
 }
-.prof-txt{
+
+.prof-txt {
     font-size: 14px;
 }
-@media screen and (min-width: 767px){
-    .prof-area-ttl{
+
+@media screen and (min-width: 767px) {
+    .prof-area-ttl {
         font-size: 1.15rem;
     }
-    .prof-area-item{
+
+    .prof-area-item {
         font-size: 1rem;
     }
 }
-@media screen and (min-width: 1028px){
-    .prof-txt{
+
+@media screen and (min-width: 1028px) {
+    .prof-txt {
         font-size: 1rem;
     }
-    .prof-area-ttl{
+
+    .prof-area-ttl {
         font-size: 20px;
     }
-    .prof-area-item{
+
+    .prof-area-item {
         font-size: 18px;
     }
 }
+
 /* =============================================
  contact
 ============================================= */
-a.contact-btn{
+a.contact-btn {
     display: block;
     width: 80%;
     margin: 0 auto;
@@ -776,14 +946,16 @@ a.contact-btn{
     font-family: "montserrat", sans-serif;
     box-sizing: border-box;
 }
-a.contact-btn:first-child{
+
+a.contact-btn:first-child {
     color: #fff;
-    background: linear-gradient(-45deg,#008080, #04b3a5);
+    background: linear-gradient(-45deg, #008080, #04b3a5);
     border: none;
     margin-bottom: 20px;
 }
-@media screen and (min-width: 767px){
-    .contact-inner{
+
+@media screen and (min-width: 767px) {
+    .contact-inner {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -791,7 +963,8 @@ a.contact-btn:first-child{
         width: calc(100% + 30px);
         margin: 0 -15px;
     }
-    a.contact-btn{
+
+    a.contact-btn {
         max-width: calc(((100% / 12) * 6) - 30px);
         flex-basis: calc(((100% / 12) * 6) - 30px);
         margin: 0 15px;
@@ -800,22 +973,26 @@ a.contact-btn:first-child{
         justify-content: center;
         transition: .2s ease;
     }
-    a.contact-btn:first-child{
+
+    a.contact-btn:first-child {
         margin-bottom: 0;
     }
 }
-@media screen and (min-width: 1028px){
-    a.contact-btn{
+
+@media screen and (min-width: 1028px) {
+    a.contact-btn {
         font-size: 20px;
     }
-    a.contact-btn:hover{
+
+    a.contact-btn:hover {
         transform: scale(1.02);
     }
 }
+
 /* =============================================
  footer
 ============================================= */
-small{
+small {
     color: #6b6b6b;
     font-size: 12px;
     text-align: center;
@@ -823,8 +1000,9 @@ small{
     padding: 20px 0;
     font-family: "montserrat", sans-serif;
 }
-@media screen and (min-width: 767px){
-    small{
+
+@media screen and (min-width: 767px) {
+    small {
         font-size: 14px;
         padding: 40px 0;
     }
