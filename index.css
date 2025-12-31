@@ -444,7 +444,7 @@ a.policy {
 
     h1.main-logo {
         width: 60px;
-        position: absolute;
+        position: fixed;
         top: 15px;
         left: 12px;
     }
