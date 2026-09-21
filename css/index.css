@@ -388,7 +388,7 @@ a.policy {
 
 /* --- Base Section --- */
 .section-main {
-    background: url('./img/main-sp.jpg') no-repeat center/cover;
+    background: url('/img/main-sp.jpg') no-repeat center/cover;
     padding-top: 133.33%;
     width: 100%;
     position: relative;
@@ -438,7 +438,7 @@ a.policy {
 /* --- Responsive 767px --- */
 @media screen and (min-width: 767px) {
     .section-main {
-        background: url('./img/main.jpg') no-repeat center/cover;
+        background: url('/img/main.jpg') no-repeat center/cover;
         padding-top: 36%;
     }
 
@@ -486,7 +486,7 @@ a.policy {
  lead
 ============================================= */
 .section-lead {
-    background: url('./img/lead-bg.jpg')no-repeat left/cover;
+    background: url('/img/lead-bg.jpg')no-repeat left/cover;
 }
 
 .section-lead .section-ttl {
@@ -624,7 +624,7 @@ a.policy {
  service
 ============================================= */
 .section-service {
-    background: url('./img/service-bg.jpg') no-repeat bottom/cover;
+    background: url('/img/service-bg.jpg') no-repeat bottom/cover;
 }
 
 .service-element {
@@ -734,7 +734,7 @@ a.policy {
  company
 ============================================= */
 .section-company {
-    background: url('./img/company-bg.jpg')no-repeat center/cover;
+    background: url('/img/company-bg.jpg')no-repeat center/cover;
 }
 
 .section-company .section-ttl {
