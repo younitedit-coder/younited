@@ -1001,6 +1001,11 @@ a.contact-btn:first-child {
 .footer-link-wrapper{
     font-size: 13px;
     padding-left: 1rem;
+    margin-top: 3rem;
+}
+.footer-link{
+    display: inline-block;
+    margin-right: 2rem;
 }
 small {
     color: #6b6b6b;
