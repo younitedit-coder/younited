@@ -1006,6 +1006,7 @@ a.contact-btn:first-child {
 .footer-link{
     display: inline-block;
     margin-right: 2rem;
+    margin-bottom: 1rem;
 }
 small {
     color: #6b6b6b;
